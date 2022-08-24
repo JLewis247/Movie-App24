@@ -1,3 +1,4 @@
+
 const API_KEY = `d83f82417bd4ae7969fc1b9418fd9aa4`
 const image_path = `https://image.tmdb.org/t/p/w1280`
 
@@ -88,6 +89,7 @@ async function show_popup (card) {
                         <span class="heart-icon">&#9829;</span>
                     </div>
                 </div>
+                
                 <div class="right">
                     <h1>${movie.title}</h1>
                     <h3>${movie.tagline}</h3>
@@ -123,9 +125,30 @@ async function show_popup (card) {
                         <h2>Overview</h2>
                         <p>${movie.overview}</p>
                     </div>
-                    <div class="trailer">
-                        <h2>Trailer</h2>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/${movie_trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div>
+                    <section>
+                     <h1>Enter a comment</h1>
+                    </section>
+                    <section>
+                       <form>
+                         <div class="formDiv">
+                           <label for="name">Name</label>
+                           <br>
+                           <input type="text" name="name" id="name" autocomplete="on" placeholder="Enter name..." />
+                         </div>
+                        
+                         <div class="formDiv">
+                           <label for="comment">Comment</label>
+                           <br>
+                           <textarea  name="comment" id="comment" cols="30" rows="5" placeholder="Enter comment..." ></textarea>
+                         </div>
+                         <br><br>
+                         <input value="submit" type="submit" id="submit">
+                         <div id="results-field">
+                         </div>
+                       </form>
+                    </section>
+                   </div>
                     </div>
                 </div>
             </div>
@@ -240,3 +263,7 @@ function add_favorites_to_dom_from_LS (movie_data) {
         //`
     //}).join('')
 //}
+document.querySelector("form").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    createComment();
+  });
